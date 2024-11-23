@@ -49,7 +49,8 @@ function saludar4({ name, age }: { name: string; age: number }): number {
   return age;
 }
 
-// "void" devuelve algo pero no es de importancia
+// "void": para funciones que no devuelven nada. "devuelve algo pero no es de importancia"
+//Evitar usar fn :Function
 const sayHiFromFunction = (fn: (name: string) => void) => {
   return fn("Juan");
 };
@@ -59,7 +60,7 @@ const sayHi = (name: string) => {
 };
 sayHiFromFunction(sayHi);
 
-// Arrow functions
+// Tipar Arrow functions
 const sumar = (a: number, b: number) => {
   return a + b;
 };
@@ -80,6 +81,217 @@ function logMessage(message: string): void {
 }
 
 // Inferencia funciones anonimas segun contexto.
+const avengers: string[] = ["Yo", "Thor", "Ironman"];
+avengers.forEach((avenger) => console.log(avenger.toUpperCase()));
 
+//Objetos
 
+// let hero = {
+//   name: "Peter",
+//   age: 25,
+// }
+
+// function createHero(name :string, age :number ){
+//   return {
+//     name,
+//     age
+//   }
+// }
+
+// createHero("Peter", 25);
+
+// Type Alias
+
+// type Hero ={ // Pascal case
+//   name: string,
+//   age:number
+// }
+
+// let hero :Hero={
+//   name: "Peter",
+//   age: 25,
+// };
+
+// function createHero(hero : Hero): Hero{
+//   const {name, age}= hero
+//   return{name,age}
+// }
+
+// const spiterman = createHero({name:"espiterman", age:10})
+// console.log(spiterman);
+
+//Optional properties
+
+// type HeroId = `${string}-${string}-${string}-${string}-${string}`;
+// // Pascal case
+// type Hero = {
+//   readonly id?: HeroId;
+//   name: string;
+//   age: number;
+//   isActive?: boolean; //Propiedad opcional "?"
+// };
+
+// let hero: Hero = {
+//   name: "Peter",
+//   age: 25,
+//   isActive: false,
+// };
+
+// function createHero(hero: Hero): Hero {
+//   const { name, age } = hero;
+//   return {
+//     id: crypto.randomUUID(),
+//     name,
+//     age,
+//     isActive: true,
+//   };
+// }
+
+// const thor = Object.freeze(createHero({ name: "Esteban", age: 22 }));
+// console.log(thor);
+
+// // template union types
+// type HexadecimalColor = `#${string}`;
+// const color: HexadecimalColor = "#0033ff"; // hexadecimales
+
+//Union types
+// type HeroId = `${string}-${string}-${string}-${string}-${string}`;
+// type HeroPowerScale = 'local'| 'planetary' | 'galactic';
+
+// type Hero = {
+//   readonly id?: HeroId;
+//   name: string;
+//   age: number;
+//   isActive?: boolean;
+//   powerScale? :HeroPowerScale;
+// };
+
+// function createHero(hero: Hero): Hero {
+//   const { name, age } = hero;
+//   return {
+//     id: crypto.randomUUID(),
+//     name,
+//     age,
+//     isActive: true,
+//   };
+// }
+
+// const thor = createHero({ name: "Thor", age: 22 });
+// thor.powerScale ="local"
+// console.log(thor);
+
+//Intersection types
+// type HeroId = `${string}-${string}-${string}-${string}-${string}`;
+// type HeroPowerScale = 'local'| 'planetary' | 'galactic';
+
+// type HeroBasicInfo ={
+//   name: string;
+//   age: number;
+// }
+// type HeroProperties = {
+//   readonly id?: HeroId;
+//   isActive?: boolean;
+//   powerScale? :HeroPowerScale;
+// };
+
+// type Hero = HeroBasicInfo & HeroProperties;
+
+// let hero: Hero = {
+//   name: "Peter",
+//   age: 25,
+//   isActive: false,
+// };
+
+// function createHero(hero: HeroBasicInfo): Hero {
+//   const { name, age } = hero;
+//   return {
+//     id: crypto.randomUUID(),
+//     name,
+//     age,
+//     isActive: true,
+//   };
+// }
+
+// const thor = createHero({ name: "Thor", age: 22 });
+// thor.powerScale ="local"
+// console.log(thor);
+
+// type indexing
+
+// type HeroProperties = {
+//   isActive: boolean;
+//   address:{
+//     planet: string;
+//     city: string;
+//   }
+// };
+// const heroAddress: HeroProperties["address"] = {
+//   planet: "Earth",
+//   city: "New York",
+// };
+
+// Type from value
+
+// const address ={
+//   planet: "Earth",
+//   city: "New York",
+// }
+
+// type Address = typeof address;
+
+// const heroAddress: Address = {
+//   planet: "Earth",
+//   city: "New York",
+// }
+
+//Type from function return
+
+// function createAddress() {
+//   return {
+//     planet: "Earth",
+//     city: "New York",
+//   };
+// }
+
+// type Address = ReturnType<typeof createAddress>;
+
+// const languajes:/*(string, number)[]*/Array<string | boolean | number> =[];
+// languajes.push("Typescript");
+// languajes.push("Javascript");
+// languajes.push("Java");
+// languajes.push("PHP");
+// languajes.push(2);
+// languajes.push(true);
+
+type HeroId = `${string}-${string}-${string}-${string}-${string}`;
+type HeroPowerScale = "local" | "planetary" | "galactic";
+
+type HeroBasicInfo = {
+  name: string;
+  age: number;
+};
+
+const hero: HeroBasicInfo[] = [];
+
+/*
+[
+  ['x','o','o'],
+  ['o','x','o'],
+  ['x','o','x'],
+]
+*/
+
+type CellValue = 'x' | 'o' | '';
+type GameBoard =[
+  [CellValue, CellValue, CellValue],
+  [CellValue, CellValue, CellValue],
+  [CellValue, CellValue, CellValue],
+]
+
+const gameBoard : GameBoard = [
+  ['x','o','o'],
+  ['o','x','o'],
+  ['x','o','x'],
+]
+console.log(gameBoard);
 
