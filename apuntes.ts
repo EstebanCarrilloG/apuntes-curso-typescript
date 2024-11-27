@@ -1,88 +1,88 @@
-//Tipos de datos
-let num = 1;
-let text = "hola";
-let x = null;
-let y = undefined;
-//...
+// //Tipos de datos
+// let num = 1;
+// let text = "hola";
+// let x = null;
+// let y = undefined;
+// //...
 
-// la variable z implicitamente es de tipo any
-let z;
-// any Ignora el tipado de TypeScript
-let anyValue: any = "hola";
+// // la variable z implicitamente es de tipo any
+// let z;
+// // any Ignora el tipado de TypeScript
+// let anyValue: any = "hola";
 
-//Intentar escribir la menor cantidad de typos posibles
+// //Intentar escribir la menor cantidad de typos posibles
 
-//Inferencia
-//Como a y b infiere que son de tipo number sin decirle nada
+// //Inferencia
+// //Como a y b infiere que son de tipo number sin decirle nada
 
-const a = 1;
-const b = 2;
-//C tambien sera de tipo number
-const c = a + b;
+// const a = 1;
+// const b = 2;
+// //C tambien sera de tipo number
+// const c = a + b;
 
-let cadenaDeTexto = "hola";
-//El editor detecta automaticamente los metodos que se le pueden aplicar a la cadena de texto
-cadenaDeTexto.toLocaleUpperCase();
+// let cadenaDeTexto = "hola";
+// //El editor detecta automaticamente los metodos que se le pueden aplicar a la cadena de texto
+// cadenaDeTexto.toLocaleUpperCase();
 
-// x  cadenaDeTexto = 2
-// x  cadenaDeTexto.propiedadInexistente
+// // x  cadenaDeTexto = 2
+// // x  cadenaDeTexto.propiedadInexistente
 
-//Funciones
-function saludar(name: string) {
-  console.log(`hola ${name}`);
-}
-saludar("Juan");
+// //Funciones
+// function saludar1(name: string) {
+//   console.log(`hola ${name}`);
+// }
+// saludar("Juan");
 
-function saludar2({ name, age }: { name: string; age: number }) {
-  console.log(`Hola ${name} tienes ${age} años.`);
-}
-saludar2({ name: "Juan", age: 20 });
+// function saludar2({ name, age }: { name: string; age: number }) {
+//   console.log(`Hola ${name} tienes ${age} años.`);
+// }
+// saludar2({ name: "Juan", age: 20 });
 
-function saludar3(persona: { name: string; age: number }) {
-  const { name, age } = persona;
-  console.log(`Hola ${name} tienes ${age} años.`);
-}
-saludar3({ name: "Juan", age: 20 });
+// function saludar3(persona: { name: string; age: number }) {
+//   const { name, age } = persona;
+//   console.log(`Hola ${name} tienes ${age} años.`);
+// }
+// saludar3({ name: "Juan", age: 20 });
 
-function saludar4({ name, age }: { name: string; age: number }): number {
-  console.log(`Hola ${name} tienes ${age} años.`);
-  return age;
-}
+// function saludar4({ name, age }: { name: string; age: number }): number {
+//   console.log(`Hola ${name} tienes ${age} años.`);
+//   return age;
+// }
 
-// "void": para funciones que no devuelven nada. "devuelve algo pero no es de importancia"
-//Evitar usar fn :Function
-const sayHiFromFunction = (fn: (name: string) => void) => {
-  return fn("Juan");
-};
+// // "void": para funciones que no devuelven nada. "devuelve algo pero no es de importancia"
+// //Evitar usar fn :Function
+// const sayHiFromFunction = (fn: (name: string) => void) => {
+//   return fn("Juan");
+// };
 
-const sayHi = (name: string) => {
-  console.log(`hola ${name}`);
-};
-sayHiFromFunction(sayHi);
+// const sayHi = (name: string) => {
+//   console.log(`hola ${name}`);
+// };
+// sayHiFromFunction(sayHi);
 
-// Tipar Arrow functions
-const sumar = (a: number, b: number) => {
-  return a + b;
-};
-const restar: (a: number, b: number) => number = (a, b) => {
-  return a - b;
-};
+// // Tipar Arrow functions
+// const sumar1 = (a: number, b: number) => {
+//   return a + b;
+// };
+// const restar: (a: number, b: number) => number = (a, b) => {
+//   return a - b;
+// };
 
-// Never - nunca va a retornar un value. Va a retornar un error con el mensaje indicado
-function trowError(message: string): never {
-  if (message) throw new Error(message);
-  throw new Error(message);
-}
+// // Never - nunca va a retornar un value. Va a retornar un error con el mensaje indicado
+// function trowError(message: string): never {
+//   if (message) throw new Error(message);
+//   throw new Error(message);
+// }
 
-function logMessage(message: string): void {
-  console.log(message);
-  //throw new Error(message); <-- Never -->
-  //return implicito <--- Void  da igual --> no devuelve nada.
-}
+// function logMessage(message: string): void {
+//   console.log(message);
+//   //throw new Error(message); <-- Never -->
+//   //return implicito <--- Void  da igual --> no devuelve nada.
+// }
 
-// Inferencia funciones anonimas segun contexto.
-const avengers: string[] = ["Yo", "Thor", "Ironman"];
-avengers.forEach((avenger) => console.log(avenger.toUpperCase()));
+// // Inferencia funciones anonimas segun contexto.
+// const avengers: string[] = ["Yo", "Thor", "Ironman"];
+// avengers.forEach((avenger) => console.log(avenger.toUpperCase()));
 
 //Objetos
 
@@ -263,35 +263,83 @@ avengers.forEach((avenger) => console.log(avenger.toUpperCase()));
 // languajes.push(2);
 // languajes.push(true);
 
-type HeroId = `${string}-${string}-${string}-${string}-${string}`;
-type HeroPowerScale = "local" | "planetary" | "galactic";
+// type HeroId = `${string}-${string}-${string}-${string}-${string}`;
+// type HeroPowerScale = "local" | "planetary" | "galactic";
 
-type HeroBasicInfo = {
-  name: string;
-  age: number;
-};
+// type HeroBasicInfo = {
+//   name: string;
+//   age: number;
+// };
 
-const hero: HeroBasicInfo[] = [];
+// const hero: HeroBasicInfo[] = [];
 
-/*
-[
-  ['x','o','o'],
-  ['o','x','o'],
-  ['x','o','x'],
-]
-*/
+// //tuplas
 
-type CellValue = 'x' | 'o' | '';
-type GameBoard =[
-  [CellValue, CellValue, CellValue],
-  [CellValue, CellValue, CellValue],
-  [CellValue, CellValue, CellValue],
-]
+// /*
+// [
+//   ['x','o','o'],
+//   ['o','x','o'],
+//   ['x','o','x'],
+// ]
+// */
 
-const gameBoard : GameBoard = [
-  ['x','o','o'],
-  ['o','x','o'],
-  ['x','o','x'],
-]
-console.log(gameBoard);
+// type CellValue = 'x' | 'o' | '';
+// type GameBoard =[
+//   [CellValue, CellValue, CellValue],
+//   [CellValue, CellValue, CellValue],
+//   [CellValue, CellValue, CellValue],
+// ]
 
+// const gameBoard : GameBoard = [
+//   ['x','o','o'],
+//   ['o','x','o'],
+//   ['x','o','x'],
+// ]
+// console.log(gameBoard);
+
+
+// type RGB = readonly [number, number, number];
+
+// const black: RGB = [0,0,0];
+// const white: RGB = [255,255,255];
+
+// //readonly para tuplas fijas
+
+// //enums
+
+// const enum ERROR_TYPES{ 
+//   NOT_FOUND = 'NOT_FOUND',
+//   UNAUTHORIZED = 'UNAUTHORIZED',
+//   FORBIDDEN = 'FORBIDDEN'
+// }
+// function mostarMensaje(tipoDeError: ERROR_TYPES){ 
+//   if(tipoDeError === ERROR_TYPES.NOT_FOUND){
+//     console.log("El recurso no se encuentra");
+//   } else if(tipoDeError === ERROR_TYPES.UNAUTHORIZED){
+//     console.log("No estas autorizado");
+//   }else if(tipoDeError === ERROR_TYPES.FORBIDDEN){
+//     console.log("No estas autorizado");
+//   }
+// }
+
+//Aserciones de tipos
+
+// bien eliminar erroe en tiempo de ejecucuion
+// const  canvas = document.querySelector("canvas");
+
+// if (canvas instanceof HTMLCanvasElement) {
+//   const ctx = canvas.getContext("2d");
+// }
+
+// // No recomendable
+// const  canv = document.querySelector("canvas") as HTMLCanvasElement;
+
+// if (canv !== null) {
+//   const ctx = canv.getContext("2d");
+// }
+
+// const canvas1 = document.querySelector("canvas");
+
+// if (canvas1 !== null) {
+//   const ctx = (canvas1 as HTMLCanvasElement).getContext("2d");
+// }
